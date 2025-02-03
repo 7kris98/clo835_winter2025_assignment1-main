@@ -14,7 +14,6 @@ DATABASE = os.environ.get("DATABASE") or "employees"
 COLOR_FROM_ENV = os.environ.get('APP_COLOR') or "lime"
 DBPORT = int(os.environ.get("DBPORT"))
 
-#connection to the MySQL database
 db_conn = connections.Connection(
     host= DBHOST,
     port=DBPORT,
@@ -26,7 +25,6 @@ db_conn = connections.Connection(
 output = {}
 table = 'employee';
 
-# Define the supported color codes
 color_codes = {
     "red": "#e74c3c",
     "green": "#16a085",

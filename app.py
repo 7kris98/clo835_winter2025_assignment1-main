@@ -23,6 +23,7 @@ db_conn = connections.Connection(
 )
 
 output = {}
+
 table = 'employee';
 
 color_codes = {

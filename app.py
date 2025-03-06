@@ -19,9 +19,9 @@ db_conn = connections.Connection(
     port=DBPORT,
     user= DBUSER,
     password= DBPWD, 
-    db= DATABASE
-    
+    db= DATABASE   
 )
+
 output = {}
 table = 'employee';
 

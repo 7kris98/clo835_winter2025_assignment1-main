@@ -1,6 +1,18 @@
 <!doctype html>
 <title>Hello from Flask</title>
-<body style="background: {{ color }};"></body>
+<style>
+  body {
+    background-image: url("{{ url_for('static', filename='download.jpeg') }}");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+</style>
+
+<h1>{{ group }}</h1>
+<h3>{{ slogan }}</h3>
+
+<!--<body style="background: {{ color }};"></body>-->
 <div style="color: #e4e4e4;
     text-align:  center;
     height: 90px;

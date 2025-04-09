@@ -73,14 +73,14 @@ def download_bg_image():
 # Call on startup
 download_bg_image()
 
-# Connect to MySQL DB
-db_conn = connections.Connection(
-    host=DBHOST,
-    port=DBPORT,
-    user=DBUSER,
-    password=DBPWD,
-    db=DATABASE
-)
+# # Connect to MySQL DB
+# db_conn = connections.Connection(
+#     host=DBHOST,
+#     port=DBPORT,
+#     user=DBUSER,
+#     password=DBPWD,
+#     db=DATABASE
+# )
 
 table = 'employee'
 output = {}

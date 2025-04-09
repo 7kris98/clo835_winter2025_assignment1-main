@@ -8,15 +8,33 @@ import logging
 
 app = Flask(__name__)
 
+
+
 # Set up logging
 logging.basicConfig(level=logging.INFO)
 
 # DB connection details (from K8s secrets)
-DBHOST = os.environ.get("DBHOST") or "localhost"
-DBUSER = os.environ.get("DBUSER") or "root"
-DBPWD = os.environ.get("DBPWD") or "password"
-DATABASE = os.environ.get("DATABASE") or "employees"
+DBHOST = os.environ.get("DBHOST", "localhost")
+DBUSER = os.environ.get("DBUSER", "root")
+DBPWD = os.environ.get("DBPWD", "password")
+DATABASE = os.environ.get("DATABASE", "employees")
 DBPORT = int(os.environ.get("DBPORT", 3306))
+
+
+db_conn = None
+def connect_to_db():
+    global db_conn
+    if app.config.get("TESTING", False):
+        logging.info("Skipping DB connection in test mode.")
+        return
+    db_conn = connections.Connection(
+        host=DBHOST,
+        port=DBPORT,
+        user=DBUSER,
+        password=DBPWD,
+        db=DATABASE
+    )
+
 
 
 # Group Name and Slogan from ConfigMap
@@ -131,5 +149,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--color', required=False)
     args = parser.parse_args()
+    connect_to_db()
+
 
     app.run(host='0.0.0.0', port=81, debug=True)

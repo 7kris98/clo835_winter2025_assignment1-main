@@ -22,12 +22,12 @@ spec:
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: secrets
+                  name: flask-secrets
                   key: DBPWD
             - name: MYSQL_DATABASE
               valueFrom:
                 secretKeyRef:
-                  name: secrets
+                  name: flask-secrets
                   key: DATABASE
           volumeMounts:
             - name: mysql-storage

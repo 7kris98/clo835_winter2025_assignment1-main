@@ -23,9 +23,9 @@ spec:
             - containerPort: 81
           envFrom:
             - secretRef:
-                name: secrets
+                name: flask-secrets
             - configMapRef:
-                name: configmap
+                name: flask-config
           volumeMounts:
             - name: flask-storage
               mountPath: /app/static

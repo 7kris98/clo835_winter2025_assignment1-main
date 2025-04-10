@@ -63,7 +63,8 @@ def download_bg_image():
             region_name=AWS_REGION
         )
 
-        bucket_name, key = BG_IMAGE_S3_URL.replace("s3://", "").split("/", 1)
+        bucket_name = "clo835-finalproject-bucket"
+        key = "download.jpeg"
         logging.info(f"Fetching background image from: {BG_IMAGE_S3_URL, bucket_name, key}")
         s3.download_file(bucket_name, key, LOCAL_BG_IMAGE_PATH)
         logging.info("Background image downloaded successfully.")

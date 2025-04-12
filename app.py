@@ -58,9 +58,10 @@ def download_bg_image():
 
     try:
         s3 = boto3.client('s3',
-            aws_access_key_id=AWS_ACCESS_KEY,
-            aws_secret_access_key=AWS_SECRET_KEY,
-            region_name=AWS_REGION
+            aws_access_key_id=os.environ.get("AWS_ACCESS_KEY"),
+            aws_secret_access_key=os.environ.get("AWS_SECRET_KEY"),
+            aws_session_token=os.environ.get("AWS_SESSION_TOKEN"), 
+            region_name=os.environ.get("AWS_REGION")
         )
 
         bucket_name = "clo835-finalproject-bucket"
